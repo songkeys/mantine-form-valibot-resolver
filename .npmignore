@@ -17,3 +17,8 @@ tsconfig.json
 jest.config.cjs
 yarn.lock
 .DS_Store
+.nvmrc
+.biome.json
+tsup.config.ts
+vitest.config.ts
+.github
