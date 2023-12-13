@@ -1,5 +1,7 @@
 # mantine-form-valibot-resolver
 
+[![npm version](https://badgen.net/npm/v/mantine-form-valibot-resolver)](https://npm.im/mantine-form-valibot-resolver)
+
 [valibot](https://www.npmjs.com/package/valibot) resolver for [@mantine/form](https://mantine.dev/form/use-form/).
 
 ## Installation
