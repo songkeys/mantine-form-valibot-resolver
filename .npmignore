@@ -22,3 +22,4 @@ yarn.lock
 tsup.config.ts
 vitest.config.ts
 .github
+.tsimp

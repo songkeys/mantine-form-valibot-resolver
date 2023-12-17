@@ -1,3 +1,12 @@
+// @ts-ignore no types for jsdom
+import { JSDOM } from 'jsdom'
+const { window } = new JSDOM()
+globalThis.window = window
+globalThis.document = window.document
+globalThis.navigator = window.navigator
+
+import { deepEqual } from 'node:assert/strict'
+import { it } from 'node:test'
 import { useForm } from '@mantine/form'
 import { act, renderHook } from '@testing-library/react'
 import {
@@ -9,7 +18,6 @@ import {
 	object,
 	string,
 } from 'valibot'
-import { expect, it } from 'vitest'
 import { valibotResolver } from './valibot-resolver'
 
 const schema = object({
@@ -30,10 +38,10 @@ it('validates basic fields with given valibot schema', () => {
 		}),
 	)
 
-	expect(hook.result.current.errors).toStrictEqual({})
+	deepEqual(hook.result.current.errors, {})
 	act(() => hook.result.current.validate())
 
-	expect(hook.result.current.errors).toStrictEqual({
+	deepEqual(hook.result.current.errors, {
 		name: 'Name should have at least 2 letters',
 		email: 'Invalid email',
 		age: 'You must be at least 18 to create an account',
@@ -48,7 +56,7 @@ it('validates basic fields with given valibot schema', () => {
 	)
 	act(() => hook.result.current.validate())
 
-	expect(hook.result.current.errors).toStrictEqual({
+	deepEqual(hook.result.current.errors, {
 		age: 'You must be at least 18 to create an account',
 	})
 })
@@ -71,17 +79,17 @@ it('validates nested fields with given valibot schema', () => {
 		}),
 	)
 
-	expect(hook.result.current.errors).toStrictEqual({})
+	deepEqual(hook.result.current.errors, {})
 	act(() => hook.result.current.validate())
 
-	expect(hook.result.current.errors).toStrictEqual({
+	deepEqual(hook.result.current.errors, {
 		'nested.field': 'Field should have at least 2 letters',
 	})
 
 	act(() => hook.result.current.setValues({ nested: { field: 'John' } }))
 	act(() => hook.result.current.validate())
 
-	expect(hook.result.current.errors).toStrictEqual({})
+	deepEqual(hook.result.current.errors, {})
 })
 
 const listSchema = object({
@@ -102,15 +110,15 @@ it('validates list fields with given valibot schema', () => {
 		}),
 	)
 
-	expect(hook.result.current.errors).toStrictEqual({})
+	deepEqual(hook.result.current.errors, {})
 	act(() => hook.result.current.validate())
 
-	expect(hook.result.current.errors).toStrictEqual({
+	deepEqual(hook.result.current.errors, {
 		'list.0.name': 'Name should have at least 2 letters',
 	})
 
 	act(() => hook.result.current.setValues({ list: [{ name: 'John' }] }))
 	act(() => hook.result.current.validate())
 
-	expect(hook.result.current.errors).toStrictEqual({})
+	deepEqual(hook.result.current.errors, {})
 })
