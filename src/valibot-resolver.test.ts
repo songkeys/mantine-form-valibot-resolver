@@ -9,21 +9,19 @@ import { deepEqual } from 'node:assert/strict'
 import { it } from 'node:test'
 import { useForm } from '@mantine/form'
 import { act, renderHook } from '@testing-library/react'
-import {
-	array,
-	email,
-	minLength,
-	minValue,
-	number,
-	object,
-	string,
-} from 'valibot'
+import * as v from 'valibot'
 import { valibotResolver } from './valibot-resolver'
 
-const schema = object({
-	name: string([minLength(2, 'Name should have at least 2 letters')]),
-	email: string([email('Invalid email')]),
-	age: number([minValue(18, 'You must be at least 18 to create an account')]),
+const schema = v.object({
+	name: v.pipe(
+		v.string(),
+		v.minLength(2, 'Name should have at least 2 letters'),
+	),
+	email: v.pipe(v.string(), v.email('Invalid email')),
+	age: v.pipe(
+		v.number(),
+		v.minValue(18, 'You must be at least 18 to create an account'),
+	),
 })
 
 it('validates basic fields with given valibot schema', () => {
@@ -61,9 +59,12 @@ it('validates basic fields with given valibot schema', () => {
 	})
 })
 
-const nestedSchema = object({
-	nested: object({
-		field: string([minLength(2, 'Field should have at least 2 letters')]),
+const nestedSchema = v.object({
+	nested: v.object({
+		field: v.pipe(
+			v.string(),
+			v.minLength(2, 'Field should have at least 2 letters'),
+		),
 	}),
 })
 
@@ -92,10 +93,13 @@ it('validates nested fields with given valibot schema', () => {
 	deepEqual(hook.result.current.errors, {})
 })
 
-const listSchema = object({
-	list: array(
-		object({
-			name: string([minLength(2, 'Name should have at least 2 letters')]),
+const listSchema = v.object({
+	list: v.array(
+		v.object({
+			name: v.pipe(
+				v.string(),
+				v.minLength(2, 'Name should have at least 2 letters'),
+			),
 		}),
 	),
 })
