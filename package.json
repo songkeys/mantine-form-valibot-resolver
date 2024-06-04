@@ -2,12 +2,7 @@
 	"name": "mantine-form-valibot-resolver",
 	"version": "2.0.0",
 	"description": "Valibot resolver for @mantine/form validation",
-	"keywords": [
-		"valibot",
-		"mantine",
-		"form",
-		"resolver"
-	],
+	"keywords": ["valibot", "mantine", "form", "resolver"],
 	"homepage": "https://github.com/Songkeys/mantine-form-valitbot-resolver#readme",
 	"bugs": {
 		"url": "https://github.com/Songkeys/mantine-form-valibot-resolver/issues"
