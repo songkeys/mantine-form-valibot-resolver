@@ -1,36 +1,27 @@
 import type { FormErrors } from '@mantine/form'
-import { type BaseIssue, type BaseSchema, safeParse } from 'valibot'
+import { type BaseIssue, type BaseSchema, getDotPath, safeParse } from 'valibot'
 
-export function valibotResolver<T extends Record<string, unknown>>(
-	schema: BaseSchema<T, T, BaseIssue<unknown>>,
+/**
+ * Returns a function that can be used to validate a Maninte form with Valibot.
+ *
+ * @param schema The Valibot schema.
+ *
+ * @returns A validation function.
+ */
+export function valibotResolver<TValues extends Record<string, unknown>>(
+	schema: BaseSchema<TValues, TValues, BaseIssue<unknown>>,
 ) {
-	return (values: T): FormErrors => {
+	return (values: TValues): FormErrors => {
+		const errors: FormErrors = {}
 		const result = safeParse(schema, values)
-		const formErrors: FormErrors = {}
 		if (result.issues) {
 			for (const issue of result.issues) {
-				if (issue.path) {
-					let key = ''
-					for (const item of issue.path) {
-						if (
-							'key' in item &&
-							(typeof item.key === 'string' || typeof item.key === 'number')
-						) {
-							if (key) {
-								key += `.${item.key}`
-							} else {
-								key += item.key
-							}
-						} else {
-							break
-						}
-					}
-					if (key) {
-						formErrors[key] = issue.message
-					}
+				const path = getDotPath(issue)
+				if (path) {
+					errors[path] = issue.message
 				}
 			}
 		}
-		return formErrors
+		return errors
 	}
 }
