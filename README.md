@@ -24,17 +24,39 @@ With pnpm:
 pnpm add valibot mantine-form-valibot-resolver
 ```
 
-## Basic fields validation
+## Versions
+
+Peer dependencies:
+
+| mantine-form-valibot-resolver | valibot                                                    | @mantine/form |
+| ----------------------------- | ---------------------------------------------------------- | ------------- |
+| 2.x                           | [>=0.31.0](https://valibot.dev/guides/migrate-to-v0.31.0/) | >=7.0.0       |
+| 1.x                           | <0.31.0                                                    | >=7.0.0       |
+
+## Usage
+
+### Basic fields validation
 
 ```tsx
-import { object, string, minLength, email, number, minValue } from "valibot";
+import {
+	object,
+	string,
+	minLength,
+	email,
+	number,
+	minValue,
+	pipe,
+} from "valibot";
 import { useForm } from "@mantine/form";
 import { valibotResolver } from "mantine-form-valibot-resolver";
 
 const schema = object({
-	name: string([minLength(2, "Name should have at least 2 letters")]),
-	email: string([email("Invalid email")]),
-	age: number([minValue(18, "You must be at least 18 to create an account")]),
+	name: pipe(string(), minLength(2, "Name should have at least 2 letters")),
+	email: pipe(string(), email("Invalid email")),
+	age: pipe(
+		number(),
+		minValue(18, "You must be at least 18 to create an account")
+	),
 });
 
 const form = useForm({
@@ -55,16 +77,16 @@ form.errors;
 // }
 ```
 
-## Nested fields validation
+### Nested fields validation
 
 ```tsx
-import { object, string, minLength } from "valibot";
+import { object, string, minLength, pipe } from "valibot";
 import { useForm } from "@mantine/form";
 import { valibotResolver } from "mantine-form-valibot-resolver";
 
 const nestedSchema = object({
 	nested: object({
-		field: string([minLength(2, "Field should have at least 2 letters")]),
+		field: pipe(string(), minLength(2, "Field should have at least 2 letters")),
 	}),
 });
 
@@ -84,17 +106,17 @@ form.errors;
 // }
 ```
 
-## List fields validation
+### List fields validation
 
 ```tsx
-import { object, array, string, minLength } from "valibot";
+import { object, array, string, minLength, pipe } from "valibot";
 import { useForm } from "@mantine/form";
 import { valibotResolver } from "mantine-form-valibot-resolver";
 
 const listSchema = object({
 	list: array(
 		object({
-			name: string([minLength(2, "Name should have at least 2 letters")]),
+			name: pipe(string(), minLength(2, "Name should have at least 2 letters")),
 		})
 	),
 });
@@ -113,17 +135,17 @@ form.errors;
 // }
 ```
 
-## With TypeScript
+### With TypeScript
 
 You can use the `Input` type from the `valibot` library to get the type of the form data.
 
 ```tsx
-import { email, object, string, type Input } from "valibot";
+import { email, object, string, pipe, type Input } from "valibot";
 import { useForm } from "@mantine/form";
 import { valibotResolver } from "mantine-form-valibot-resolver";
 
 export const userSchema = object({
-	email: string([email()]),
+	email: pipe(string(), email()),
 });
 
 type FormData = Input<typeof userSchema>;
