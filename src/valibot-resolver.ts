@@ -1,4 +1,4 @@
-import { type FormErrors } from '@mantine/form'
+import type { FormErrors } from '@mantine/form'
 import { type BaseIssue, type BaseSchema, safeParse } from 'valibot'
 
 export function valibotResolver<T extends Record<string, unknown>>(

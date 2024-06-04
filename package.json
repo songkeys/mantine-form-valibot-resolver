@@ -1,70 +1,65 @@
 {
-  "name": "mantine-form-valibot-resolver",
-  "version": "1.0.0",
-  "description": "Valibot resolver for @mantine/form validation",
-  "keywords": [
-    "valibot",
-    "mantine",
-    "form",
-    "resolver"
-  ],
-  "homepage": "https://github.com/Songkeys/mantine-form-valitbot-resolver#readme",
-  "bugs": {
-    "url": "https://github.com/Songkeys/mantine-form-valibot-resolver/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Songkeys/mantine-form-valibot-resolver.git"
-  },
-  "license": "MIT",
-  "author": "Songkeys <songv587@gmail.com>",
-  "exports": {
-    ".": {
-      "import": {
-        "types": "./dist/index.d.mts",
-        "default": "./dist/index.mjs"
-      },
-      "require": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
-      }
-    }
-  },
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
-  "scripts": {
-    "build": "tsup --dts",
-    "format": "biome format . --write",
-    "lint": "biome check .",
-    "lint:fix": "biome check . --apply",
-    "prepublishOnly": "npm run build",
-    "release": "bumpp",
-    "test": "node --import=tsimp/import --test **/*.test.ts",
-    "typecheck": "tsc --noEmit",
-    "watch": "tsup --watch"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "^1.4.1",
-    "@testing-library/react": "^14.1.2",
-    "@types/node": "^20.10.4",
-    "bumpp": "^9.2.1",
-    "jsdom": "^23.0.1",
-    "simple-git-hooks": "^2.9.0",
-    "tsimp": "^2.0.10",
-    "tsup": "^8.0.1",
-    "typescript": "^5.3.3",
-    "valibot": "0.31.0-rc.11"
-  },
-  "peerDependencies": {
-    "@mantine/form": ">=7.0.0",
-    "valibot": ">=0.31.0 <1"
-  },
-  "packageManager": "pnpm@8.12.1",
-  "engines": {
-    "node": ">=16.6.0"
-  },
-  "simple-git-hooks": {
-    "pre-commit": "npm run format && npm run lint:fix"
-  }
+	"name": "mantine-form-valibot-resolver",
+	"version": "1.0.0",
+	"description": "Valibot resolver for @mantine/form validation",
+	"keywords": ["valibot", "mantine", "form", "resolver"],
+	"homepage": "https://github.com/Songkeys/mantine-form-valitbot-resolver#readme",
+	"bugs": {
+		"url": "https://github.com/Songkeys/mantine-form-valibot-resolver/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Songkeys/mantine-form-valibot-resolver.git"
+	},
+	"license": "MIT",
+	"author": "Songkeys <songv587@gmail.com>",
+	"exports": {
+		".": {
+			"import": {
+				"types": "./dist/index.d.mts",
+				"default": "./dist/index.mjs"
+			},
+			"require": {
+				"types": "./dist/index.d.ts",
+				"default": "./dist/index.js"
+			}
+		}
+	},
+	"main": "./dist/index.js",
+	"module": "./dist/index.mjs",
+	"types": "./dist/index.d.ts",
+	"scripts": {
+		"build": "tsup --dts",
+		"format": "biome format . --write",
+		"lint": "biome check .",
+		"lint:fix": "biome check . --apply",
+		"prepublishOnly": "npm run build",
+		"release": "bumpp",
+		"test": "node --import=tsimp/import --test **/*.test.ts",
+		"typecheck": "tsc --noEmit",
+		"watch": "tsup --watch"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^1.7.3",
+		"@testing-library/react": "^16.0.0",
+		"@types/node": "^20.14.1",
+		"bumpp": "^9.4.1",
+		"jsdom": "^24.1.0",
+		"simple-git-hooks": "^2.11.1",
+		"tsimp": "^2.0.11",
+		"tsup": "^8.1.0",
+		"typescript": "^5.4.5",
+		"valibot": "0.31.0-rc.11"
+	},
+	"peerDependencies": {
+		"@mantine/form": ">=7.0.0",
+		"valibot": ">=0.31.0 <1"
+	},
+	"packageManager": "pnpm@9.1.4",
+	"engines": {
+		"node": ">=16.6.0"
+	},
+	"simple-git-hooks": {
+		"pre-commit": "npm run format && npm run lint:fix"
+	}
 }
