@@ -38,34 +38,29 @@ Peer dependencies:
 ### Basic fields validation
 
 ```tsx
-import {
-	object,
-	string,
-	minLength,
-	email,
-	number,
-	minValue,
-	pipe,
-} from "valibot";
 import { useForm } from "@mantine/form";
 import { valibotResolver } from "mantine-form-valibot-resolver";
+import * as v from "valibot";
 
-const schema = object({
-	name: pipe(string(), minLength(2, "Name should have at least 2 letters")),
-	email: pipe(string(), email("Invalid email")),
-	age: pipe(
-		number(),
-		minValue(18, "You must be at least 18 to create an account")
-	),
+const schema = v.object({
+  name: v.pipe(
+    v.string(),
+    v.minLength(2, "Name should have at least 2 letters")
+  ),
+  email: v.pipe(v.string(), v.email("Invalid email")),
+  age: v.pipe(
+    v.number(),
+    v.minValue(18, "You must be at least 18 to create an account")
+  ),
 });
 
 const form = useForm({
-	initialValues: {
-		name: "",
-		email: "",
-		age: 16,
-	},
-	validate: valibotResolver(schema),
+  initialValues: {
+    name: "",
+    email: "",
+    age: 16,
+  },
+  validate: valibotResolver(schema),
 });
 
 form.validate();
@@ -80,23 +75,26 @@ form.errors;
 ### Nested fields validation
 
 ```tsx
-import { object, string, minLength, pipe } from "valibot";
 import { useForm } from "@mantine/form";
 import { valibotResolver } from "mantine-form-valibot-resolver";
+import * as v from "valibot";
 
-const nestedSchema = object({
-	nested: object({
-		field: pipe(string(), minLength(2, "Field should have at least 2 letters")),
-	}),
+const nestedSchema = v.object({
+  nested: v.object({
+    field: v.pipe(
+      v.string(),
+      v.minLength(2, "Field should have at least 2 letters")
+    ),
+  }),
 });
 
 const form = useForm({
-	initialValues: {
-		nested: {
-			field: "",
-		},
-	},
-	validate: valibotResolver(nestedSchema),
+  initialValues: {
+    nested: {
+      field: "",
+    },
+  },
+  validate: valibotResolver(nestedSchema),
 });
 
 form.validate();
@@ -109,23 +107,26 @@ form.errors;
 ### List fields validation
 
 ```tsx
-import { object, array, string, minLength, pipe } from "valibot";
 import { useForm } from "@mantine/form";
 import { valibotResolver } from "mantine-form-valibot-resolver";
+import * as v from "valibot";
 
-const listSchema = object({
-	list: array(
-		object({
-			name: pipe(string(), minLength(2, "Name should have at least 2 letters")),
-		})
-	),
+const listSchema = v.object({
+  list: v.array(
+    v.object({
+      name: v.pipe(
+        v.string(),
+        v.minLength(2, "Name should have at least 2 letters")
+      ),
+    })
+  ),
 });
 
 const form = useForm({
-	initialValues: {
-		list: [{ name: "" }],
-	},
-	validate: valibotResolver(listSchema),
+  initialValues: {
+    list: [{ name: "" }],
+  },
+  validate: valibotResolver(listSchema),
 });
 
 form.validate();
@@ -140,21 +141,21 @@ form.errors;
 You can use the `InferInput` type from the `valibot` library to get the type of the form data.
 
 ```tsx
-import { email, object, string, pipe, type InferInput } from "valibot";
 import { useForm } from "@mantine/form";
 import { valibotResolver } from "mantine-form-valibot-resolver";
+import * as v from "valibot";
 
-export const userSchema = object({
-	email: pipe(string(), email()),
+export const userSchema = v.object({
+  email: v.pipe(v.string(), v.email()),
 });
 
-type FormData = InferInput<typeof userSchema>;
+type FormData = v.InferInput<typeof userSchema>;
 
 const form = useForm<FormData>({
-	initialValues: {
-		email: "",
-	},
-	validate: valibotResolver(userSchema),
+  initialValues: {
+    email: "",
+  },
+  validate: valibotResolver(userSchema),
 });
 ```
 
