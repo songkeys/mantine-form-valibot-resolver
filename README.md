@@ -137,10 +137,10 @@ form.errors;
 
 ### With TypeScript
 
-You can use the `Input` type from the `valibot` library to get the type of the form data.
+You can use the `InferInput` type from the `valibot` library to get the type of the form data.
 
 ```tsx
-import { email, object, string, pipe, type Input } from "valibot";
+import { email, object, string, pipe, type InferInput } from "valibot";
 import { useForm } from "@mantine/form";
 import { valibotResolver } from "mantine-form-valibot-resolver";
 
@@ -148,7 +148,7 @@ export const userSchema = object({
 	email: pipe(string(), email()),
 });
 
-type FormData = Input<typeof userSchema>;
+type FormData = InferInput<typeof userSchema>;
 
 const form = useForm<FormData>({
 	initialValues: {
