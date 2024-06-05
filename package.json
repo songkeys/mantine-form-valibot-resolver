@@ -49,7 +49,7 @@
 		"tsimp": "^2.0.11",
 		"tsup": "^8.1.0",
 		"typescript": "^5.4.5",
-		"valibot": "0.31.0-rc.11"
+		"valibot": "0.31.0-rc.12"
 	},
 	"peerDependencies": {
 		"@mantine/form": ">=7.0.0",
