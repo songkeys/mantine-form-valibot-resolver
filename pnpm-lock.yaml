@@ -40,8 +40,8 @@ importers:
         specifier: ^5.4.5
         version: 5.4.5
       valibot:
-        specifier: 0.31.0-rc.12
-        version: 0.31.0-rc.12
+        specifier: 0.35.0
+        version: 0.35.0
 
 packages:
 
@@ -1414,8 +1414,8 @@ packages:
   url-parse@1.5.10:
     resolution: {integrity: sha512-WypcfiRhfeUP9vvF0j6rw0J3hrWrw6iZv3+22h6iRMJ/8z1Tj6XfLP4DsUix5MhMPnXpiHDoKyoZ/bdCkwBCiQ==}
 
-  valibot@0.31.0-rc.12:
-    resolution: {integrity: sha512-vAI18A65Og1BwuVqC3Zvr0+yNxOANLHDVo3r5VOTsVItfBl6KcykmY7fioSU5CVSlrj2JgViHjcsfAofO2h0rw==}
+  valibot@0.35.0:
+    resolution: {integrity: sha512-+i2aCRkReTrd5KBN/dW2BrPOvFnU5LXTV2xjZnjnqUIO8YUx6P2+MgRrkwF2FhkexgyKq/NIZdPdknhHf5A/Ww==}
 
   w3c-xmlserializer@5.0.0:
     resolution: {integrity: sha512-o8qghlI8NZHU1lLPrpi2+Uq7abh4GGPpYANlalzWxyWteJOCsr/P+oPBA49TOLu5FTZO4d3F9MnWJfiMo4BkmA==}
@@ -2836,7 +2836,7 @@ snapshots:
       querystringify: 2.2.0
       requires-port: 1.0.0
 
-  valibot@0.31.0-rc.12: {}
+  valibot@0.35.0: {}
 
   w3c-xmlserializer@5.0.0:
     dependencies:
