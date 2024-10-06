@@ -30,6 +30,7 @@ Peer dependencies:
 
 | mantine-form-valibot-resolver | valibot                                                    | @mantine/form |
 | ----------------------------- | ---------------------------------------------------------- | ------------- |
+| 3.x                           | >=1.0.0 | >=7.0.0       |
 | 2.x                           | [>=0.31.0](https://valibot.dev/guides/migrate-to-v0.31.0/) | >=7.0.0       |
 | 1.x                           | <0.31.0                                                    | >=7.0.0       |
 

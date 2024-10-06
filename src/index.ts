@@ -1,1 +1,1 @@
-export { valibotResolver } from './valibot-resolver'
+export { valibotResolver } from "./valibot-resolver";

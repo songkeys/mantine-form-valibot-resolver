@@ -30,9 +30,8 @@
 	"types": "./dist/index.d.ts",
 	"scripts": {
 		"build": "tsup --dts",
-		"format": "biome format . --write",
-		"lint": "biome check .",
-		"lint:fix": "biome check . --apply",
+		"lint": "biome check",
+		"lint:fix": "biome check --write",
 		"prepublishOnly": "npm run build",
 		"release": "bumpp",
 		"test": "node --import=tsimp/import --test **/*.test.ts",
@@ -60,6 +59,6 @@
 		"node": ">=16.6.0"
 	},
 	"simple-git-hooks": {
-		"pre-commit": "npm run format && npm run lint:fix"
+		"pre-commit": "npm run lint:fix"
 	}
 }
