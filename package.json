@@ -45,22 +45,22 @@
     "watch": "tsup --watch"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.7.3",
-    "@testing-library/react": "^16.0.0",
-    "@types/node": "^20.14.1",
-    "bumpp": "^9.4.1",
-    "jsdom": "^24.1.0",
+    "@biomejs/biome": "^1.9.3",
+    "@testing-library/react": "^16.0.1",
+    "@types/node": "^20.16.10",
+    "bumpp": "^9.6.1",
+    "jsdom": "^25.0.1",
     "simple-git-hooks": "^2.11.1",
     "tsimp": "^2.0.11",
-    "tsup": "^8.1.0",
-    "typescript": "^5.4.5",
+    "tsup": "^8.3.0",
+    "typescript": "^5.6.2",
     "valibot": "1.0.0-beta.0"
   },
   "peerDependencies": {
     "@mantine/form": ">=7.0.0",
-    "valibot": "^1.0.0"
+    "valibot": ">=1.0.0"
   },
-  "packageManager": "pnpm@9.1.4",
+  "packageManager": "pnpm@9.12.0",
   "engines": {
     "node": ">=16.6.0"
   },

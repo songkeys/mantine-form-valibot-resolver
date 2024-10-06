@@ -2,25 +2,5 @@
 	"$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
 	"files": {
 		"ignore": ["./dist", "./.tsimp"]
-	},
-	"formatter": {
-		"enabled": true
-	},
-	"linter": {
-		"enabled": true,
-		"rules": {
-			"recommended": true
-		}
-	},
-	"javascript": {
-		"formatter": {
-			"quoteStyle": "single",
-			"trailingComma": "all",
-			"semicolons": "asNeeded"
-		}
-	},
-
-	"organizeImports": {
-		"enabled": true
 	}
 }
