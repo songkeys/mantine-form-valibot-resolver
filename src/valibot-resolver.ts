@@ -7,7 +7,7 @@ import {
 } from "valibot";
 
 /**
- * Returns a function that can be used to validate a Maninte form with Valibot.
+ * Returns a function that can be used to validate a Mantine form with Valibot.
  *
  * @param schema The Valibot schema.
  *
