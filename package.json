@@ -1,6 +1,6 @@
 {
 	"name": "mantine-form-valibot-resolver",
-	"version": "3.0.0",
+	"version": "3.0.1",
 	"description": "Valibot resolver for @mantine/form validation",
 	"keywords": ["valibot", "mantine", "form", "resolver"],
 	"homepage": "https://github.com/Songkeys/mantine-form-valitbot-resolver#readme",
